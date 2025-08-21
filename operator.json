@@ -1,38 +1,11 @@
 {
-    "name": "Template R Operator",
-    "description": "A template to build a Tercen operator in R.",
-    "tags": ["template"],
+    "name": "Gate membership to label",
+    "description": "This operator takes as input a table of gate memberships per event and outputs a label based on gate names.",
+    "tags": ["gating", "labeling", "flow cytometry"],
     "authors": ["tercen"],
-    "urls": ["https://github.com/tercen/template-R-operator"],
-    "container":"ghcr.io/tercen/template-R-operator:2.0.0",
-    "properties": [
-        {
-            "kind": "DoubleProperty",
-            "name": "Property1",
-            "defaultValue": 42.0,
-            "description": "Example Double Property"
-        },
-        {
-            "kind": "StringProperty",
-            "name": "Property2",
-            "defaultValue": "42",
-            "description": "Example String Property"
-        },
-        {
-            "kind": "BooleanProperty",
-            "name": "Property3",
-            "defaultValue": true,
-            "description": "Example Boolean Property"
-        },
-        {
-            "kind": "EnumeratedProperty",
-            "isSingleSelection":true,
-            "name": "Property4",
-            "defaultValue": "element2",
-            "values": ["element1", "element2", "element3"],
-            "description": "Example Enumerated Property"
-        }
-    ],
+    "urls": ["https://github.com/tercen/gate_membership_to_label_operator"],
+    "container":"ghcr.io/tercen/gate_membership_to_label_operator:0.0.2",
+    "properties": [],
     "operatorSpec": {
         "kind": "OperatorSpec",
         "ontologyUri": "https://tercen.com/_ontology/tercen",
@@ -43,20 +16,20 @@
             "metaFactors": [
             {
                 "kind": "MetaFactor",
-                "name": "Sample",
+                "name": "Event",
                 "type": "",
-                "description": "Sample identifiers",
-                "ontologyMapping": "sample",
+                "description": "Unique event identifiers",
+                "ontologyMapping": "event",
                 "crosstabMapping": "row",
                 "cardinality": "1..n",
                 "factors": []
             },
             {
                 "kind": "MetaFactor",
-                "name": "Variable",
+                "name": "Gate",
                 "type": "",
-                "description": "Variable identifiers",
-                "ontologyMapping": "variable",
+                "description": "Gate name identifiers",
+                "ontologyMapping": "gate",
                 "crosstabMapping": "column",
                 "cardinality": "1..n",
                 "factors": []
@@ -68,27 +41,12 @@
                 "metaFactors": [
                 {
                     "kind": "MetaFactor",
-                    "name": "Y-Axis Measurement",
+                    "name": "Gate Membership",
                     "type": "numeric",
-                    "description": "Measurement value, per cell",
-                    "ontologyMapping": "measurement",
+                    "description": "Gate membership value (1 for positive, missing for negative)",
+                    "ontologyMapping": "membership",
                     "crosstabMapping": "y",
                     "cardinality": "1",
-                    "factors": []
-                }
-                ]
-            },
-            {
-                "kind": "AxisSpec",
-                "metaFactors": [
-                {
-                    "kind": "MetaFactor",
-                    "name": "X-Axis Measurement (Optional)",
-                    "type": "numeric",
-                    "description": "Second measurement value, per cell (optional)",
-                    "ontologyMapping": "measurement",
-                    "crosstabMapping": "x",
-                    "cardinality": "0..1",
                     "factors": []
                 }
                 ]
@@ -96,6 +54,13 @@
             ]
         }
         ],
-        "outputSpecs": []
+        "outputSpecs": [
+        {
+            "kind": "ColumnSpec",
+            "name": "gate_label",
+            "type": "string",
+            "description": "Concatenated gate names based on event membership"
+        }
+        ]
   }
 }

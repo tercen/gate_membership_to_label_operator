@@ -1,13 +1,13 @@
 {
   "kind": "OperatorUnitTest",
-  "name": "test",
+  "name": "gate_membership_test",
   "namespace": "ds0",
-  "inputDataUri": "groups_super_exp.csv",
-  "outputDataUri": ["table1.csv","table2.csv","table3.csv"],
-  "columns": ["Group"],
-  "rows": ["Variable"],
+  "inputDataUri": "gate_membership_test.csv",
+  "outputDataUri": [],
+  "columns": ["CD4_gate", "CD8_gate", "CD3_gate"],
+  "rows": ["event_id"],
   "colors": [],
   "labels": [],
-  "yAxis": "Measurement",
+  "yAxis": "gate_membership",
   "xAxis": ""
 }

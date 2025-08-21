@@ -1,0 +1,6 @@
+".ci",".ri","ds0.gate_label"
+0,0,"CD4_gate_CD3_gate"
+0,1,"CD8_gate_CD3_gate"
+0,2,"CD4_gate"
+0,3,"CD3_gate"
+0,4,"CD4_gate_CD8_gate"
