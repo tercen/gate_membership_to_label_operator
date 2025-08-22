@@ -26,9 +26,7 @@ gate_labels <- ctx %>%
     gate_label = paste(gate_name, collapse = "_"),
     .groups = "drop"
   ) %>%
-  # Add column index (all results go to same column)
-  mutate(.ci = 0L) %>%
-  select(.ri, .ci, gate_label)
+  select(.ri, gate_label)
 
 # Save results
 gate_labels %>%
