@@ -10,8 +10,8 @@ ctx = tercenCtx()
 # .ri corresponds to unique event IDs (rows)
 # .ci corresponds to gate names (columns)
 
-# Get column names (gate names)
-col_names <- ctx$cnames
+# Get column names (gate names) as character vector
+col_names <- unlist(ctx$cselect())
 
 # Process the data to create gate labels
 gate_labels <- ctx %>%
