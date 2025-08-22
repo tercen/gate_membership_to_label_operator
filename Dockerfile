@@ -1,4 +1,4 @@
-FROM tercen/runtime-r44:4.4.3-7
+FROM tercen/runtime-r44:4.4.3-8
 
 COPY . /operator
 WORKDIR /operator

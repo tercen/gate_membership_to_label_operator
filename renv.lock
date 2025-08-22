@@ -3,6 +3,10 @@
     "Version": "4.4.3",
     "Repositories": [
       {
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
+      },
+      {
         "Name": "TERCEN",
         "URL": "https://cran.tercen.com/api/v1/rlib/tercen"
       }
